@@ -1,0 +1,172 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.job-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  }
+  
+  .job-header {
+    margin-bottom: 12px;
+  }
+  
+  .job-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: $dark-color;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+  }
+  
+  .job-company {
+    font-size: 1rem;
+    color: $primary-color;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  
+  .job-source {
+    font-size: 0.8rem;
+    color: $medium-gray;
+    margin-bottom: 10px;
+  }
+  
+  .job-salary {
+    font-weight: 500;
+    color: $success-color;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+  }
+  
+  .job-tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+    gap: 8px;
+    
+    .job-tag {
+      background-color: rgba($primary-color, 0.1);
+      color: $primary-color;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+  }
+  
+  .job-timestamp {
+    margin-bottom: 15px;
+    font-size: 0.85rem;
+    color: $medium-gray;
+  }
+  
+  .job-description {
+    font-size: 0.9rem;
+    color: $text-color;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    flex-grow: 1;
+    
+    p {
+      margin-top: 0;
+    }
+    
+    // Estilos para contenido HTML en descripciones
+    ul, ol {
+      padding-left: 20px;
+      margin: 10px 0;
+    }
+    
+    a {
+      color: $primary-color;
+      text-decoration: none;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  .toggle-description {
+    background: none;
+    border: none;
+    color: $primary-color;
+    padding: 0;
+    font-size: 0.85rem;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-top: 5px;
+    
+    &:hover {
+      color: darken($primary-color, 10%);
+    }
+  }
+  
+  .job-actions {
+    margin-top: auto;
+    
+    .apply-button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: $primary-color;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 500;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+  }
+  
+  // Estilos responsive
+  @include respond-to('tablet') {
+    padding: 15px;
+    
+    .job-title {
+      font-size: 1.1rem;
+    }
+  }
+  
+  @include respond-to('mobile') {
+    .job-title {
+      font-size: 1rem;
+    }
+    
+    .job-tags {
+      margin-bottom: 10px;
+      
+      .job-tag {
+        padding: 3px 8px;
+        font-size: 0.7rem;
+      }
+    }
+    
+    .job-company, .job-salary {
+      font-size: 0.9rem;
+    }
+    
+    .job-actions {
+      .apply-button {
+        padding: 8px;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}

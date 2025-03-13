@@ -1,0 +1,378 @@
+@import './_variables';
+
+// Estilos generales
+body {
+  background-color: $white;
+  color: $text-color;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $dark-color;
+}
+
+a {
+  color: $primary-color;
+  
+  &:hover {
+    color: $accent-color;
+  }
+}
+
+// Navbar
+.navbar {
+  background-color: $primary-color;
+  color: $white;
+  border-bottom: none;
+  
+  .navbar-brand h1 {
+    color: $white;
+  }
+  
+  .navbar-menu-toggle span {
+    background-color: $white;
+  }
+  
+  .navbar-link {
+    color: $white;
+    
+    &:after {
+      background-color: $accent-color;
+    }
+    
+    &:hover {
+      color: $accent-light;
+    }
+    
+    &.active {
+      color: $accent-color;
+    }
+  }
+  
+  // Estilos responsive del menú
+  @media (max-width: 768px) {
+    .navbar-menu.open {
+      background-color: $primary-color;
+      border-bottom: none;
+    }
+    
+    .navbar-link {
+      border-bottom: 1px solid rgba($white, 0.1);
+    }
+  }
+}
+
+// Botones
+.refresh-button, 
+.page-button, 
+.toggle-button, 
+.apply-button, 
+.reset-button {
+  background-color: $white !important;
+  color: $primary-color !important;
+  border: 1px solid $primary-color !important;
+  
+  &:hover:not(:disabled) {
+    background-color: $accent-light !important;
+    color: $dark-color !important;
+    border-color: $accent-color !important;
+  }
+  
+  &:active {
+    background-color: $accent-color !important;
+  }
+  
+  &:disabled {
+    background-color: $lightest-gray !important;
+    color: $medium-gray !important;
+    border-color: $light-gray !important;
+  }
+  
+  &.active {
+    background-color: $accent-color !important;
+    color: $dark-color !important;
+    border-color: $accent-color !important;
+  }
+}
+
+// JobFilter
+.job-filter {
+  background-color: $white;
+  border: 1px solid $light-gray;
+  
+  h3 {
+    border-bottom: 1px solid $light-gray;
+  }
+  
+  input, select {
+    border: 1px solid $light-gray;
+    
+    &:focus {
+      border-color: $accent-color;
+    }
+  }
+  
+  input[type="range"] {
+    background-color: $light-gray;
+    
+    &::-webkit-slider-thumb {
+      background-color: $accent-color;
+    }
+    
+    &::-moz-range-thumb {
+      background-color: $accent-color;
+    }
+  }
+}
+
+// JobList
+.job-list-info .no-results {
+  border-left-color: $accent-color;
+  
+  p {
+    color: darken($accent-color, 10%);
+  }
+}
+
+// JobCard
+.job-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+  
+  &:hover {
+    border-color: $accent-light;
+  }
+  
+  .job-tag {
+    background-color: $lightest-gray;
+    color: $primary-color;
+    border: 1px solid $light-gray;
+  }
+  
+  .toggle-description {
+    color: $accent-color;
+  }
+}
+
+// Gráficos y análisis
+.job-analytics {
+  .chart-bar {
+    background-color: $primary-color;
+  }
+  
+  .chart-bar-container:hover .chart-bar {
+    background-color: $accent-color;
+  }
+  
+  .country-item {
+    &:hover {
+      border-color: $accent-light;
+    }
+    
+    &.selected {
+      border-color: $accent-color !important;
+      
+      &:after {
+        border-top-color: $accent-color;
+      }
+    }
+  }
+  
+  .world-map svg circle {
+    fill: $primary-color;
+    
+    &:hover {
+      fill: $accent-color;
+    }
+  }
+  
+  .job-type-distribution {
+    .type-bar {
+      &.remote {
+        background-color: $primary-color;
+      }
+      
+      &.hybrid {
+        background-color: $secondary-color;
+      }
+      
+      &.onsite {
+        background-color: $accent-light;
+      }
+    }
+  }
+  
+  .country-detail {
+    border-color: $accent-light;
+    
+    h3 {
+      color: $primary-color;
+      border-bottom-color: $light-gray;
+    }
+  }
+  
+  .analytics-summary {
+    background-color: $lightest-gray;
+    
+    .stat-value {
+      color: $primary-color;
+    }
+  }
+}
+
+// Paginación activa
+.pagination .page-info {
+  color: $primary-color;
+}
+
+// Estilos para loadings
+.loading-spinner {
+  border-top-color: $accent-color !important;
+}
+
+// Footer styles
+.footer {
+  background-color: $primary-color;
+  color: $white;
+  padding: $spacing-lg 0;
+  margin-top: auto;
+  
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+}
+
+// Corrección para los elementos de la lista de países
+.job-analytics .country-item,
+.job-analytics .country-grid > div {
+  // Estilo general
+  background-color: $white !important;
+  border: 1px solid $light-gray !important;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  
+  // Colores y tipografía
+  .country-name {
+    color: $primary-color;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  
+  .country-count {
+    color: $primary-color;
+    background-color: rgba($accent-light, 0.4);
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  
+  // Estado hover
+  &:hover {
+    border-color: $accent-color !important;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    
+    .country-count {
+      background-color: rgba($accent-color, 0.5);
+    }
+  }
+  
+  // Estado seleccionado
+  &.selected {
+    border-color: $accent-color !important;
+    background-color: rgba($accent-light, 0.1) !important;
+    position: relative;
+    
+    .country-count {
+      background-color: $accent-color;
+      color: $dark-color;
+    }
+    
+    &:after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -8px;
+      border-width: 8px;
+      border-style: solid;
+      border-color: $accent-color transparent transparent transparent;
+    }
+  }
+}
+
+// Aseguramos que todos los elementos de la lista de países tienen el mismo aspecto
+.country-list .country-item,
+.job-analytics [class*="country-item"] {
+  // Estilo general
+  background-color: $white !important;
+  border: 1px solid $light-gray !important;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  
+  // Colores y tipografía
+  .country-name {
+    color: $primary-color;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  
+  .country-count {
+    color: $primary-color;
+    background-color: rgba($accent-light, 0.4);
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  
+  // Estado hover
+  &:hover {
+    border-color: $accent-color !important;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    
+    .country-count {
+      background-color: rgba($accent-color, 0.5);
+    }
+  }
+  
+  // Estado seleccionado
+  &.selected {
+    border-color: $accent-color !important;
+    background-color: rgba($accent-light, 0.1) !important;
+    position: relative;
+    
+    .country-count {
+      background-color: $accent-color;
+      color: $dark-color;
+    }
+    
+    &:after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -8px;
+      border-width: 8px;
+      border-style: solid;
+      border-color: $accent-color transparent transparent transparent;
+    }
+  }
+}
+
+// Estilos específicos para las listas de países en otras secciones
+.analytics-content .country-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}

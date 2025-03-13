@@ -1,0 +1,117 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.job-filter {
+  background-color: white;
+  border: 1px solid $light-gray;
+  border-radius: 4px;
+  padding: 24px;
+  margin-bottom: 20px;
+  
+  h3 {
+    margin-top: 0;
+    margin-bottom: 24px;
+    color: $dark-color;
+    font-size: 1.2rem;
+    border-bottom: 1px solid $light-gray;
+    padding-bottom: 12px;
+    letter-spacing: 0.05em;
+    font-weight: 400;
+  }
+  
+  .filter-section {
+    margin-bottom: 20px;
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 400;
+      color: $dark-color;
+      font-size: 0.9rem;
+      letter-spacing: 0.03em;
+    }
+    
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid $light-gray;
+      border-radius: 2px;
+      font-size: 0.9rem;
+      background-color: white;
+      
+      &:focus {
+        border-color: $dark-color;
+        outline: none;
+      }
+    }
+    
+    input[type="range"] {
+      -webkit-appearance: none;
+      height: 2px;
+      background-color: $light-gray;
+      margin-top: 10px;
+      
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: $dark-color;
+        cursor: pointer;
+        border: 1px solid white;
+      }
+      
+      &::-moz-range-thumb {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: $dark-color;
+        cursor: pointer;
+        border: 1px solid white;
+      }
+    }
+  }
+  
+  .reset-button {
+    width: 100%;
+    padding: 10px;
+    background-color: transparent;
+    color: $dark-color;
+    border: 1px solid $light-gray;
+    border-radius: 2px;
+    font-weight: 400;
+    cursor: pointer;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    transition: all 0.2s;
+    
+    &:hover {
+      background-color: $light-gray;
+    }
+  }
+  
+  // Estilos responsive
+  @include respond-to('tablet') {
+    padding: 15px;
+    
+    .filter-section {
+      margin-bottom: 12px;
+    }
+  }
+  
+  @include respond-to('mobile') {
+    .filter-section {
+      label {
+        font-size: 0.9rem;
+      }
+      
+      input, select {
+        padding: 8px;
+      }
+    }
+    
+    .reset-button {
+      padding: 10px;
+    }
+  }
+}

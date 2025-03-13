@@ -1,0 +1,148 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.navbar {
+  background-color: white;
+  color: $dark-color;
+  padding: 18px 0;
+  border-bottom: 1px solid $light-gray;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar-brand {
+    h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+  }
+  
+  .navbar-menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    cursor: pointer;
+    
+    span {
+      height: 1px;
+      width: 100%;
+      background-color: $dark-color;
+      transition: all 0.3s;
+    }
+  }
+  
+  .navbar-menu {
+    display: flex;
+  }
+  
+  .navbar-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar-link {
+    padding: 8px 15px;
+    margin: 0 5px;
+    font-family: $font-family;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    font-weight: 400;
+    transition: color 0.2s;
+    position: relative;
+    
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 15px;
+      right: 15px;
+      height: 1px;
+      background-color: $dark-color;
+      transform: scaleX(0);
+      transition: transform 0.2s ease-in-out;
+      transform-origin: right center;
+    }
+    
+    &:hover {
+      color: $dark-color;
+      
+      &:after {
+        transform: scaleX(1);
+        transform-origin: left center;
+      }
+    }
+    
+    &.active {
+      font-weight: 500;
+      
+      &:after {
+        transform: scaleX(1);
+      }
+    }
+  }
+  
+  // Estilos responsive
+  @include respond-to('tablet') {
+    .navbar-menu-toggle {
+      display: flex;
+    }
+    
+    .navbar-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: white;
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      border-bottom: 0px solid $light-gray;
+      
+      &.open {
+        max-height: 200px;
+        border-bottom: 1px solid $light-gray;
+      }
+    }
+    
+    .navbar-links {
+      flex-direction: column;
+      width: 100%;
+      padding: 0 20px;
+    }
+    
+    .navbar-link {
+      padding: 12px 10px;
+      margin: 0;
+      border-bottom: 1px solid $light-gray;
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      &:after {
+        display: none;
+      }
+    }
+  }
+}

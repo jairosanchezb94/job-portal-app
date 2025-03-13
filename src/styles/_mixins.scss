@@ -1,0 +1,99 @@
+@import './variables';
+
+// Mixin para media queries responsive
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "No se encontró el breakpoint: #{$breakpoint}";
+  }
+}
+
+// Mixin para crear degradados
+@mixin gradient($direction, $start-color, $end-color) {
+  background: $start-color;
+  background: linear-gradient($direction, $start-color, $end-color);
+}
+
+// Mixin para el efecto de flexbox
+@mixin flex($direction: row, $justify: flex-start, $align: stretch, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
+// Mixin para centrar elementos con flex
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Mixin para truncar texto con elipsis
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Mixin para limitar líneas de texto
+@mixin text-clamp($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Mixin para transiciones
+@mixin transition($properties...) {
+  transition-property: $properties;
+  transition-duration: $transition-speed;
+  transition-timing-function: $transition-ease;
+}
+
+// Mixin para sombras
+@mixin box-shadow($level: 'md') {
+  @if $level == 'sm' {
+    box-shadow: $box-shadow-sm;
+  } @else if $level == 'md' {
+    box-shadow: $box-shadow-md;
+  } @else if $level == 'lg' {
+    box-shadow: $box-shadow-lg;
+  } @else {
+    box-shadow: $box-shadow-md;
+  }
+}
+
+// Mixin para estilos de botones
+@mixin button($bg-color: $primary-color, $text-color: white, $hover-darken: 10%) {
+  background-color: $bg-color;
+  color: $text-color;
+  border: none;
+  border-radius: $border-radius-md;
+  padding: $spacing-sm $spacing-md;
+  font-weight: 500;
+  cursor: pointer;
+  @include transition(background-color);
+  
+  &:hover:not(:disabled) {
+    background-color: darken($bg-color, $hover-darken);
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+// Mixin para tarjetas
+@mixin card($padding: $spacing-md, $radius: $border-radius-lg) {
+  background-color: white;
+  border-radius: $radius;
+  padding: $padding;
+  @include box-shadow('md');
+}
