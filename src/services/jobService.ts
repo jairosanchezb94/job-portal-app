@@ -1,4 +1,4 @@
-import { Job, CountryJobStats } from '../models/interfaces';
+import { Job, CountryJobStats, AdzunaJob, RemotiveJob, RemoteOkJob } from '../models/interfaces';
 
 // Variables de entorno que necesitaremos
 const ADZUNA_APP_ID = import.meta.env.VITE_ADZUNA_APP_ID || '23aa7c91';
@@ -18,7 +18,7 @@ export const fetchAdzunaJobs = async (): Promise<Job[]> => {
       console.error("Adzuna data.results is not an array:", data);
       return [];
     }
-    return data.results.map((job: any) => {
+    return data.results.map((job: AdzunaJob) => {
       let companyStr = "Sin compañía";
       if (job.company && typeof job.company === 'object' && typeof job.company.display_name === 'string') {
         companyStr = job.company.display_name;
@@ -83,7 +83,7 @@ export const fetchRemotiveJobs = async (): Promise<Job[]> => {
       console.error("Remotive data.jobs is not an array:", data);
       return [];
     }
-    return data.jobs.map((job: any) => ({
+    return data.jobs.map((job: RemotiveJob) => ({
       id: job.id.toString(),
       title: job.title,
       company: job.company_name || "Sin compañía",
@@ -122,8 +122,8 @@ export const fetchRemoteOkJobs = async (): Promise<Job[]> => {
       console.error("Remote OK data is not an array:", data);
       return [];
     }
-    const jobsArray = data.filter((job: any) => job.id && job.id !== 0);
-    return jobsArray.map((job: any) => ({
+    const jobsArray = data.filter((job: RemoteOkJob) => job.id && job.id !== 0);
+    return jobsArray.map((job: RemoteOkJob) => ({
       id: job.id.toString(),
       title: job.position || job.title || "Sin título",
       company: job.company || "Sin compañía",
@@ -197,7 +197,9 @@ export const getCountryStats = (jobs: Job[]): CountryJobStats[] => {
       });
     }
     
-    const stats = countryMap.get(normalizedCountry)!;
+    const stats = countryMap.get(normalizedCountry);
+    if (!stats) return;
+    
     stats.count += 1;
     stats.jobTypes[job.type] += 1;
     

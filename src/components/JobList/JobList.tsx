@@ -134,8 +134,8 @@ const JobList: React.FC<JobListProps> = ({ filterValues, onJobsFetched }) => {
         const diffTime = Math.abs(now.getTime() - jobDate.getTime());
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
         if (diffDays > filterValues.maxDays) return false;
-      } catch (e) {
-        // Si hay un error al parsear la fecha, mantenemos el trabajo en los resultados
+      } catch {
+        return false;
       }
     }
     
@@ -146,7 +146,7 @@ const JobList: React.FC<JobListProps> = ({ filterValues, onJobsFetched }) => {
   filteredJobs.sort((a, b) => {
     try {
       return new Date(b.created).getTime() - new Date(a.created).getTime();
-    } catch (e) {
+    } catch {
       return 0;
     }
   });
