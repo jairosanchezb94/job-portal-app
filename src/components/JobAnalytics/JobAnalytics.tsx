@@ -30,20 +30,20 @@ const JobAnalytics: React.FC<JobAnalyticsProps> = ({ jobs }) => {
   
   const getCountryColor = (count: number) => {
     const maxCount = getMaxCount();
-    if (maxCount === 0) return '#f8f5f6'; // Fondo muy claro para países sin datos
+    if (maxCount === 0) return '#f8f5f6';
     
     // Calculamos la intensidad en base al recuento
     const intensity = Math.max(0.2, Math.min(0.9, count / maxCount));
     
     if (intensity < 0.3) {
       // Para valores bajos, usamos tonos del gris
-      return `rgba(150, 144, 145, ${intensity + 0.2})`;  // #969091 con opacidad
+      return `rgba(150, 144, 145, ${intensity + 0.2})`; 
     } else if (intensity < 0.6) {
       // Para valores medios, mezclamos con el amarillo claro
-      return `rgba(255, 233, 153, ${intensity + 0.1})`; // #ffe999 con opacidad
+      return `rgba(255, 233, 153, ${intensity + 0.1})`;
     } else {
       // Para valores altos, usamos el amarillo intenso
-      return `rgba(255, 217, 82, ${intensity})`; // #ffd952 con opacidad
+      return `rgba(255, 217, 82, ${intensity})`;
     }
   };
   
@@ -91,7 +91,7 @@ const JobAnalytics: React.FC<JobAnalyticsProps> = ({ jobs }) => {
         <div className="map-container">
           <div className="map-visualization" style={{ overflow: 'hidden', position: 'relative' }}>
             {/* Fondo de mapa mundial */}
-            <svg width="100%" height="400" viewBox="0 0 800 450" style={{ position: 'absolute', top: 0, left: 0 }}>
+            <svg width="100%" height="400" viewBox="0 0 800 450" style={{ position: 'absolute', top: 30, left: 30 }}>
               <image
                 href="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
                 width="800"
@@ -135,7 +135,6 @@ const JobAnalytics: React.FC<JobAnalyticsProps> = ({ jobs }) => {
                   "Ireland": [400, 150, 12],
                   "EMEA": [470, 200, 12],
                   "Asia": [600, 210, 15],
-                  // Añadir más países según sea necesario
                 };
                 
                 // Normalizar el nombre del país para encontrar su posición
@@ -148,7 +147,7 @@ const JobAnalytics: React.FC<JobAnalyticsProps> = ({ jobs }) => {
                 if (!position) return null;
                 
                 const [x, y, baseRadius] = position;
-                const scale = Math.sqrt(stat.count) / 15 + 0.5; // Escalar según número de ofertas
+                const scale = Math.sqrt(stat.count) / 15 + 0.5;
                 const radius = baseRadius * scale;
                 
                 return (

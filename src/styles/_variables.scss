@@ -1,26 +1,27 @@
-// Nueva paleta de colores
-$primary-color: #574d4f;    // Gris oscuro con tonos púrpura
-$secondary-color: #969091;  // Gris medio para elementos secundarios
-$accent-color: #ffd952;     // Amarillo vivo para acentos principales
-$accent-light: #ffe999;     // Amarillo claro para acentos suaves
-$white: #ffffff;            // Blanco para fondos y textos sobre oscuros
+// Nueva paleta de colores suave
+$primary-color: #4a4a4a;    // Gris oscuro suave para textos principales
+$secondary-color: #6c757d;  // Gris medio para elementos secundarios
+$accent-color: #5bc0de;     // Azul suave para acentos
+$accent-light: #d1ecf1;     // Azul muy claro para acentos suaves
+$background-color: #f8f9fa; // Fondo claro y neutro
+$white: #ffffff;            // Blanco para contrastes
 
 // Asignación semántica de colores
-$dark-color: $primary-color;         // Color oscuro para textos principales
-$text-color: darken($primary-color, 10%);  // Textos regulares
-$medium-gray: $secondary-color;      // Textos secundarios
-$light-gray: lighten($secondary-color, 20%);  // Bordes y separadores
+$dark-color: $primary-color;       // Para textos y elementos principales
+$text-color: $primary-color;         // Texto regular
+$medium-gray: $secondary-color;      // Textos o detalles secundarios
+$light-gray: lighten($secondary-color, 20%);    // Bordes y separadores
 $lightest-gray: lighten($secondary-color, 25%); // Fondos sutiles
 
 // Colores específicos de estado
-$success-color: #574d4f;      // Mismo que primary-color para mantener coherencia
-$warning-color: $accent-color; // Amarillo para advertencias
-$error-color: #c85d5d;        // Un rojo apagado que va con la paleta
-$info-color: lighten($primary-color, 20%); // Versión más clara del color primario
+$success-color: #6dbf88;      // Verde suave para éxito
+$warning-color: #ffe8a1;      // Amarillo suave para advertencias
+$error-color: #e27d7d;        // Rojo suave para errores
+$info-color: #a8d8d6;         // Teal suave para información
 
-// Tipografía elegante
-$font-family: 'Playfair Display', 'Libre Baskerville', Georgia, serif;
-$font-family-sans: 'Lato', 'Helvetica Neue', Arial, sans-serif;
+// Tipografía
+$font-family: 'Open Sans', sans-serif;
+$font-family-sans: 'Open Sans', sans-serif;
 $font-size-base: 16px;
 
 // Breakpoints para responsive
